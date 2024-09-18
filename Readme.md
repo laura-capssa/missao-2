@@ -19,5 +19,5 @@ Siga os passos abaixo para rodar o projeto localmente:
    abra o projeto
    cd classroom
    npm install
-   npm start
+   npm run dev
    abrir = http://localhost:3000
