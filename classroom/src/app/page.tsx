@@ -1,5 +1,5 @@
 import Card from './components/Card';
-import Header from './components/Header'; // Assumindo que o Header está neste caminho
+import Header from './components/Header';
 
 export default function Home() {
   return (

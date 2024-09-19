@@ -1,22 +1,20 @@
-'use client'; // Indica que este componente é um Client Component
+'use client';
 
 import React, { useState } from 'react';
 import { AppBar, Toolbar, IconButton, Typography, Drawer, Box, Button, Icon } from '@mui/material';
-import { useRouter } from 'next/navigation'; // Usando useRouter de next/navigation
+import { useRouter } from 'next/navigation'; 
 
 const Header = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false); // Estado para controlar o Drawer (menu lateral)
-  const router = useRouter(); // Agora usamos useRouter da nova API de navegação do Next.js
+  const [drawerOpen, setDrawerOpen] = useState(false); 
+  const router = useRouter();
 
   const handleDrawerToggle = (open: boolean) => {
-    setDrawerOpen(open); // Controla o estado do Drawer
+    setDrawerOpen(open); 
   };
 
   const handleMenuClose = (path?: string) => {
     setDrawerOpen(false);
-    if (path) {
-      router.push(path); // Usando router.push para navegação
-    }
+    if (path) { router.push(path); }
   };
 
   const menuItems = [
@@ -32,7 +30,6 @@ const Header = () => {
     <>
       <AppBar position="relative" sx={{ backgroundColor: 'white', boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.1)' }}>
         <Toolbar sx={{ display: 'flex', alignItems: 'center' }}>
-          {/* Botão para abrir o Drawer */}
           <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => handleDrawerToggle(true)} sx={{ marginRight: 2 }}>
             <img src="../imagens/icon2.png" alt="Icone" width={27} height={30} />
           </IconButton>

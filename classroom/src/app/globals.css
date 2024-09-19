@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Estilos globais */
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #ffffff;
@@ -10,7 +9,6 @@ body {
   padding: 0;
 }
 
-/* Cabeçalho fixo */
 header {
   position: fixed;
   top: 0;
