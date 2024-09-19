@@ -45,24 +45,42 @@ const Header = () => {
         </Toolbar>
       </AppBar>
 
-      {/* Drawer (Menu lateral) */}
       <Drawer anchor="left" open={drawerOpen} onClose={() => handleDrawerToggle(false)}>
         <Box sx={{ width: 250, padding: 2 }}>
           {menuItems.map((item, index) => (
-            <Button
-              key={index}
-              sx={{ 
-                justifyContent: 'flex-start', 
-                width: '100%', 
-                textTransform: 'none', 
-                marginBottom: 2, 
-                color: '#555555', // Define a cor da fonte
-                fontFamily: 'Roboto, sans-serif' // Define a família da fonte
-              }}
-              onClick={() => handleMenuClose(item.path)}
-            >
-              {item.text}
-            </Button>
+            item.path ? (
+              <Button
+                key={index}
+                sx={{ 
+                  justifyContent: 'flex-start', 
+                  width: '100%', 
+                  textTransform: 'none', 
+                  marginBottom: 2, 
+                  color: '#555555', 
+                  fontFamily: 'Roboto, sans-serif',
+                  fontWeight: 580,
+                  padding: '8px 16px'
+                }}
+                onClick={() => handleMenuClose(item.path)}
+              >
+                {item.text}
+              </Button>
+            ) : (
+              <Typography
+                key={index}
+                sx={{ 
+                  justifyContent: 'flex-start', 
+                  width: '100%', 
+                  textTransform: 'none', 
+                  marginBottom: 2, 
+                  color: '#555555', 
+                  fontFamily: 'Roboto, sans-serif',
+                  padding: '8px 16px'
+                }}
+              >
+                {item.text}
+              </Typography>
+            )
           ))}
         </Box>
       </Drawer>
