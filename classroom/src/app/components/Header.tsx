@@ -1,66 +1,72 @@
 'use client'; // Indica que este componente é um Client Component
 
 import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, MenuItem, MenuList, Paper, Popper, ClickAwayListener, Icon } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Typography, Drawer, Box, Button, Icon } from '@mui/material';
 import { useRouter } from 'next/navigation'; // Usando useRouter de next/navigation
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [drawerOpen, setDrawerOpen] = useState(false); // Estado para controlar o Drawer (menu lateral)
   const router = useRouter(); // Agora usamos useRouter da nova API de navegação do Next.js
 
-  const handleMenuToggle = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
-    setOpen(!open);
+  const handleDrawerToggle = (open: boolean) => {
+    setDrawerOpen(open); // Controla o estado do Drawer
   };
 
   const handleMenuClose = (path?: string) => {
-    setOpen(false);
-    setAnchorEl(null);
+    setDrawerOpen(false);
     if (path) {
       router.push(path); // Usando router.push para navegação
     }
   };
 
-  const handleClickAway = () => {
-    setOpen(false);
-    setAnchorEl(null);
-  };
+  const menuItems = [
+    { text: 'Início' },
+    { text: 'Agenda' },
+    { text: 'estrutura-de-software', path: '/estrutura-de-software' },
+    { text: 'programacao', path: '/programacao' },
+    { text: 'Turmas arquivadas' },
+    { text: 'Configurações' },
+  ];
 
   return (
-    <AppBar position="relative"
-      sx={{ 
-        backgroundColor: 'white', 
-        boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.1)'
-      }}>
-      <Toolbar sx={{ display: 'flex', alignItems: 'center' }}>
-        <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleMenuToggle} sx={{ marginRight: 2 }}>
-          <img src="../imagens/icon2.png" alt="Icone" width={27} height={30} />
-        </IconButton>
-        <Icon sx={{ width: 32, height: 44 }} >
-          <img src="../imagens/icon.png" alt="Icone" style={{ width: '100%', height: '100%' }} />
-        </Icon>
-        <Typography variant="h5" sx={{ height: 17, color: '#555555', flexGrow: 1, marginLeft: 2, fontFamily: 'Roboto, sans-serif'}}>
-          Google Sala de Aula
-        </Typography>
+    <>
+      <AppBar position="relative" sx={{ backgroundColor: 'white', boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.1)' }}>
+        <Toolbar sx={{ display: 'flex', alignItems: 'center' }}>
+          {/* Botão para abrir o Drawer */}
+          <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => handleDrawerToggle(true)} sx={{ marginRight: 2 }}>
+            <img src="../imagens/icon2.png" alt="Icone" width={27} height={30} />
+          </IconButton>
+          <Icon sx={{ width: 32, height: 44 }}>
+            <img src="../imagens/icon.png" alt="Icone" style={{ width: '100%', height: '100%' }} />
+          </Icon>
+          <Typography variant="h5" sx={{ height: 17, color: '#555555', flexGrow: 1, marginLeft: 2, fontFamily: 'Roboto, sans-serif' }}>
+            Google Sala de Aula
+          </Typography>
+        </Toolbar>
+      </AppBar>
 
-        {/* Menu Interativo */}
-        <Popper open={open} anchorEl={anchorEl} placement="bottom-end" role={undefined}>
-          <ClickAwayListener onClickAway={handleClickAway}>
-            <Paper>
-              <MenuList>
-                <MenuItem onClick={() => handleMenuClose('/estrutura-de-software')}>
-                  Estrutura de Software
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuClose('/programacao')}>
-                  Programação
-                </MenuItem>
-              </MenuList>
-            </Paper>
-          </ClickAwayListener>
-        </Popper>
-      </Toolbar>
-    </AppBar>
+      {/* Drawer (Menu lateral) */}
+      <Drawer anchor="left" open={drawerOpen} onClose={() => handleDrawerToggle(false)}>
+        <Box sx={{ width: 250, padding: 2 }}>
+          {menuItems.map((item, index) => (
+            <Button
+              key={index}
+              sx={{ 
+                justifyContent: 'flex-start', 
+                width: '100%', 
+                textTransform: 'none', 
+                marginBottom: 2, 
+                color: '#555555', // Define a cor da fonte
+                fontFamily: 'Roboto, sans-serif' // Define a família da fonte
+              }}
+              onClick={() => handleMenuClose(item.path)}
+            >
+              {item.text}
+            </Button>
+          ))}
+        </Box>
+      </Drawer>
+    </>
   );
 };
 
