@@ -5,7 +5,7 @@
 /* Estilos globais */
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   margin: 0;
   padding: 0;
 }
@@ -14,19 +14,11 @@ body {
 header {
   position: fixed;
   top: 0;
-  width: 100%;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 12px 24px;
-  display: flex; /* Corrigido para flex */
-  justify-content: space-between; /* Organiza os itens nas extremidades */
-  align-items: center; /* Alinha verticalmente ao centro */
-  z-index: 1000;
-}
-
-header .logo {
-  display: flex;
-  align-items: center; 
+  padding: 4px 15px;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: self-start; 
 }
 
 .card {

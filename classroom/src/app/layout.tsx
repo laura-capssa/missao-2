@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from '../app/components/NavBar';
+import Header from './components/Header';
 
 // Comente as fontes locais temporariamente
 // const geistSans = localFont({
@@ -28,7 +28,6 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body>
-        <Navbar />
         <div className="pt-20">
           {children}
         </div>
