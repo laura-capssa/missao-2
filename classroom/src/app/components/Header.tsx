@@ -34,9 +34,9 @@ const Header = () => {
             <img src="../imagens/icon2.png" alt="Icone" width={27} height={30} />
           </IconButton>
           <Icon sx={{ width: 32, height: 44 }}>
-            <img src="../imagens/icon.png" alt="Icone" style={{ width: '100%', height: '100%' }} />
+            <img src="../imagens/icon.png" alt="Icone"/>
           </Icon>
-          <Typography variant="h5" sx={{ height: 17, color: '#555555', flexGrow: 1, marginLeft: 2, fontFamily: 'Roboto, sans-serif' }}>
+          <Typography variant="h5" sx={{ height: 23, color: '#555555', flexGrow: 1, marginLeft: 2, fontFamily: 'Roboto, sans-serif' }}>
             Google Sala de Aula
           </Typography>
         </Toolbar>

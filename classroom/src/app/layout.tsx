@@ -1,4 +1,5 @@
 import "./globals.css";
+import Header from './components/Header';
 
 export const metadata = {
   title: 'Classroom',
@@ -13,6 +14,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body>
+      <Header></Header>
         <div className="pt-20">
           {children}
         </div>
