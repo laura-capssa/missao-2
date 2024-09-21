@@ -20,8 +20,8 @@ const Header = () => {
   const menuItems = [
     { text: 'Início' },
     { text: 'Agenda' },
-    { text: 'estrutura-de-software', path: '/estrutura-de-software' },
-    { text: 'programacao', path: '/programacao' },
+    { text: 'estrutura-de-software', path: '/turma/estrutura-de-software' },
+    { text: 'programacao', path: '/turma/programacao' },
     { text: 'Turmas arquivadas' },
     { text: 'Configurações' },
   ];
