@@ -21,3 +21,7 @@ Siga os passos abaixo para rodar o projeto localmente:
    npm install
    npm run dev
    abrir = http://localhost:3000
+   + um terminal
+   cd classroom/src/app/backend
+   node Server.js
+   
