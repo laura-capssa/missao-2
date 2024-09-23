@@ -13,7 +13,7 @@ const Turma: React.FC<TurmaProps> = ({ turmaId }) => {
   const [activeTab, setActiveTab] = useState<'Atividades' | 'Alunos'>('Atividades');
 
   const handleTabChange = (newValue: 'Atividades' | 'Alunos') => {
-    setActiveTab(newValue);
+    setActiveTab(newValue); 
   };
 
   return (
@@ -24,8 +24,8 @@ const Turma: React.FC<TurmaProps> = ({ turmaId }) => {
           <Atividades turmaId={turmaId} />
         ) : (
           <Alunos turmaId={turmaId} />
-        )}
-      </div>
+        )} 
+      </div> 
     </div>
   );
 };
