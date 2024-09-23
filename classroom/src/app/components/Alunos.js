@@ -12,13 +12,13 @@ const Alunos = ({ turmaId }) => {
       setAlunos(alunosData);
     };
     
-    fetchAlunos();
+    fetchAlunos(); 
   }, [turmaId]);
 
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">Alunos</h2>
-      <ul>
+      <h2 className="aluno-title">Alunos</h2>
+      <ul> 
         {alunos.map((aluno, index) => (
           <li key={index} className="mb-2">{aluno}</li>
         ))}

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import HeaderTabs from './HeaderTabs';
 import Alunos from './Alunos';
 import Atividades from './Atividades';
 
@@ -9,37 +10,29 @@ interface TurmaProps {
 }
 
 const Turma: React.FC<TurmaProps> = ({ turmaId }) => {
-  const [activeTab, setActiveTab] = useState<'atividades' | 'pessoas'>('atividades');
+  // Estado que controla qual aba está ativa (inicialmente 'Atividades')
+  const [activeTab, setActiveTab] = useState<'Atividades' | 'Alunos'>('Atividades');
 
-  const handleTabChange = (tab: 'atividades' | 'pessoas') => {
-    setActiveTab(tab);
+  // Função que será passada para o HeaderTabs para alterar a aba ativa
+  const handleTabChange = (newValue: 'Atividades' | 'Alunos') => {
+    setActiveTab(newValue); // Atualiza a aba ativa com base no clique
   };
 
   return (
     <div className="p-8 bg-white min-h-screen mt-4">
-      <h1 className="text-2xl font-bold mb-4">{`Turma: ${turmaId.replace('-', ' ')}`}</h1>
-      <div className="flex border-b mb-4">
-        <button 
-          className={`flex-1 py-2 text-center font-bold ${activeTab === 'atividades' ? 'border-b-2 border-green-500 text-green-500' : 'text-gray-500'}`}
-          onClick={() => handleTabChange('atividades')}
-        >
-          Atividades
-        </button>
-        <button 
-          className={`flex-1 py-2 text-center font-bold ${activeTab === 'pessoas' ? 'border-b-2 border-green-500 text-green-500' : 'text-gray-500'}`}
-          onClick={() => handleTabChange('pessoas')}
-        >
-          Alunos
-        </button>
-      </div>
+      
+      
+      {/* Passa a função de mudança de aba para o HeaderTabs */}
+      <HeaderTabs tabs={['Atividades', 'Alunos']} onTabChange={handleTabChange} />
 
+      {/* Exibe as atividades ou alunos com base na aba ativa */}
       <div className="mt-4">
-        {activeTab === 'atividades' ? (
+        {activeTab === 'Atividades' ? (
           <Atividades turmaId={turmaId} />
         ) : (
           <Alunos turmaId={turmaId} />
-        )}
-      </div>
+        )} 
+      </div> 
     </div>
   );
 };
