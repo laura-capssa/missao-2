@@ -10,7 +10,7 @@ export const getTurmaAlunos = async (nomeSlug) => {
     return alunos;
   } catch (error) {
     console.error(error);
-    return []; // Retorna um array vazio em caso de erro
+    return [];
   }
 };
 
@@ -24,6 +24,6 @@ export const getTurmaAtividades = async (nomeSlug) => {
     return atividades;
   } catch (error) {
     console.error(error);
-    return []; // Retorna um array vazio em caso de erro
+    return [];
   }
 };

@@ -1,5 +1,4 @@
-"use client"; // Adicione esta linha no topo
-
+"use client";
 import React from 'react';
 import Turma from '../../components/Turma';
 
@@ -11,7 +10,7 @@ const Programacao: React.FC = () => {
 
   return (
     <main className="p-8 bg-white min-h-screen">
-      
+
       <Turma turmaId={turmaId} />
     </main>
   );

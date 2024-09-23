@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { getTurmaAlunos } from '../mockData'; // Ajuste o caminho se necessário
+import { getTurmaAlunos } from '../mockData';
 
 const Alunos = ({ turmaId }) => {
   const [alunos, setAlunos] = useState([]);
@@ -11,14 +11,14 @@ const Alunos = ({ turmaId }) => {
       const alunosData = await getTurmaAlunos(turmaId);
       setAlunos(alunosData);
     };
-    
-    fetchAlunos(); 
+
+    fetchAlunos();
   }, [turmaId]);
 
   return (
     <div>
       <h2 className="aluno-title">Alunos</h2>
-      <ul> 
+      <ul>
         {alunos.map((aluno, index) => (
           <li key={index} className="mb-2">{aluno}</li>
         ))}

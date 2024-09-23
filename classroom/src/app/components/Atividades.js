@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { getTurmaAtividades } from '../mockData'; // Ajuste o caminho se necessário
+import { getTurmaAtividades } from '../mockData';
 
 const Atividades = ({ turmaId }) => {
   const [atividades, setAtividades] = useState([]);
@@ -11,7 +11,7 @@ const Atividades = ({ turmaId }) => {
       const atividadesData = await getTurmaAtividades(turmaId);
       setAtividades(atividadesData);
     };
-    
+
     fetchAtividades();
   }, [turmaId]);
 

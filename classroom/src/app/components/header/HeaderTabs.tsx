@@ -3,17 +3,15 @@ import { useState } from 'react';
 
 interface HeaderTabsProps {
   tabs: string[];
-  onTabChange: (tab: 'Atividades' | 'Alunos') => void; // Função callback que será passada para notificar a mudança de aba
+  onTabChange: (tab: 'Atividades' | 'Alunos') => void;
 }
 
 const HeaderTabs: React.FC<HeaderTabsProps> = ({ tabs, onTabChange }) => {
-  const [value, setValue] = useState(0); // Estado local para controle visual das abas
+  const [value, setValue] = useState(0);
 
-  // Função chamada quando o usuário troca de aba
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
-    // Chama a função passada por props para notificar a mudança de aba
-    onTabChange(newValue === 0 ? 'Atividades' : 'Alunos'); 
+    onTabChange(newValue === 0 ? 'Atividades' : 'Alunos');
   };
 
   return (
