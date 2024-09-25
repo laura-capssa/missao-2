@@ -1,6 +1,6 @@
 # Missão 2 classroom
 
-descrição aqui.
+Atividade Classroom - Programação para Interface de Usuário
 
 ---
 
