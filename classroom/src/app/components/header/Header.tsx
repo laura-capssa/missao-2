@@ -1,32 +1,17 @@
 'use client';
-
 import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Drawer, Box, Button, Icon, Divider } from '@mui/material';
-import { useRouter } from 'next/navigation';
+import { AppBar, Toolbar, IconButton, Typography, Box, Icon } from '@mui/material';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AppsIcon from '@mui/icons-material/Apps';
+import Menu from './Menu';
 
 const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const router = useRouter();
 
   const handleDrawerToggle = (open: boolean) => {
     setDrawerOpen(open);
   };
-
-  const handleMenuClose = (path?: string) => {
-    setDrawerOpen(false);
-    if (path) { router.push(path); }
-  };
-
-  const menuItems = [
-    { text: 'Início', icon: <img src="../imagens/icon3.png" alt="Início Icon" width={15} height={15} style={{ marginRight: '15px' }} />, path: '/' },
-    { text: 'Agenda', icon: <img src="../imagens/icon4.png" alt="Agenda Icon" width={15} height={15} style={{ marginRight: '15px' }} /> },
-    { text: 'Minhas Inscrições', icon: <img src="../imagens/icon5.png" alt="Inscrições Icon" width={30} height={24} style={{ marginRight: '15px' }} /> },
-    { text: 'Pendentes', icon: <img src="../imagens/icon6.png" alt="Pendentes Icon" width={20} height={24} style={{ marginRight: '15px' }} /> },
-    { text: 'Estrutura de Software', icon: <img src="../imagens/icon7.png" alt="Estrutura Icon" width={32} height={24} />, path: '/turma/estrutura-de-software' },
-    { text: 'IJ - Programação', icon: <img src="../imagens/icon8.png" alt="Programação Icon" width={30} height={24} />, path: '/turma/programacao' },
-    { text: 'Turmas arquivadas', icon: <img src="../imagens/icon1.png" alt="Turmas arquivadas Icon" width={20} height={24} style={{ marginRight: '15px' }} /> },
-    { text: 'Configurações', icon: <img src="../imagens/icon9.png" alt="Configurações Icon" width={20} height={24} style={{ marginRight: '15px' }} /> },
-  ];
 
   return (
     <>
@@ -41,59 +26,22 @@ const Header = () => {
           <Typography variant="h5" sx={{ height: 23, color: '#555555', flexGrow: 1, marginLeft: 2, fontFamily: 'Roboto, sans-serif' }}>
             Google Sala de Aula
           </Typography>
+          <Box sx={{ width: 175, height: 100, position: 'fixed', top: 17, right: 0 }}>
+            <IconButton sx={{ color: '#333333' }}>
+              <NotificationsIcon />
+            </IconButton>
+            <IconButton sx={{ color: '#333333' }}>
+              <AppsIcon />
+            </IconButton>
+            <IconButton sx={{ color: '#333333' }}>
+              <AccountCircleIcon />
+            </IconButton>
+          </Box>
         </Toolbar>
       </AppBar>
-
-      <Drawer anchor="left" open={drawerOpen} onClose={() => handleDrawerToggle(false)}>
-        <Box sx={{ width: 250, padding: 2 }}>
-          {menuItems.map((item, index) => (
-            <React.Fragment key={index}>
-              {item.path ? (
-                <Button
-                  sx={{
-                    justifyContent: 'flex-start',
-                    width: '100%',
-                    textTransform: 'none',
-                    marginBottom: 2,
-                    color: '#555555',
-                    fontFamily: 'Roboto, sans-serif',
-                    fontWeight: 580,
-                    padding: '8px 16px',
-                    display: 'flex',
-                    alignItems: 'center'
-                  }}
-                  onClick={() => handleMenuClose(item.path)}
-                >
-                  {item.icon && <Box sx={{ marginRight: 1 }}>{item.icon}</Box>}
-                  {item.text}
-                </Button>
-              ) : (
-                <Typography
-                  sx={{
-                    justifyContent: 'flex-start',
-                    width: '100%',
-                    textTransform: 'none',
-                    marginBottom: 2,
-                    color: '#555555',
-                    fontFamily: 'Roboto, sans-serif',
-                    padding: '8px 16px',
-                    display: 'flex',
-                    alignItems: 'center'
-                  }}
-                >
-                  {item.icon && <Box sx={{ marginRight: 1 }}>{item.icon}</Box>}
-                  {item.text}
-                </Typography>
-              )}
-              {item.text === 'Agenda' && <Divider sx={{ backgroundColor: '#D3D3D3', marginBottom: 2 }} />}
-              {item.text === 'IJ - Programação' && <Divider sx={{ backgroundColor: '#D3D3D3', marginBottom: 2 }} />}
-            </React.Fragment>
-          ))}
-        </Box>
-      </Drawer>
+      <Menu drawerOpen={drawerOpen} handleDrawerToggle={handleDrawerToggle} />
     </>
   );
-
 };
 
 export default Header;
